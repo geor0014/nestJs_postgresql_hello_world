@@ -1,9 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller('user')
 export class UserController {
-  @Get()
-  findAll(): string {
-    return 'This action returns all users';
+  @Get(':id')
+  findAll(@Param('id') id: string) {
+    return {
+      user: {
+        id: id,
+      },
+    };
   }
 }
