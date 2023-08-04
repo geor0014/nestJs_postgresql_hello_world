@@ -1,3 +1,4 @@
+import { PartialType } from '@nestjs/mapped-types';
 import { IsString, IsNumber } from 'class-validator';
 
 // a DTO is a description of how an object should be shaped
@@ -11,3 +12,5 @@ export class createUserDto {
   @IsString()
   password: string;
 }
+
+export class updateUserDto extends PartialType(createUserDto) {}
