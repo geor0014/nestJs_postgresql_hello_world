@@ -27,4 +27,12 @@ export class UserService {
   async update(id: number, updateUserDto: updateUserDto) {
     return await this.userRepo.update(id, updateUserDto);
   }
+
+  async findOneByUsername(username: string) {
+    return await this.userRepo.findOne({
+      where: {
+        email: username, // we find the user that has the same email as the username
+      },
+    });
+  }
 }
