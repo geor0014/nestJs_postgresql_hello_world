@@ -8,7 +8,7 @@ import { User } from 'src/entities/user.entity';
 import { LocalStrategy } from './strategies/local-strategy';
 
 @Module({
-  providers: [AuthService, UserService, JwtService, LocalStrategy],
+  providers: [AuthService, UserService, JwtService, LocalStrategy, UserService],
   controllers: [AuthController],
   imports: [
     TypeOrmModule.forFeature([User]),

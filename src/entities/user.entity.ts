@@ -7,21 +7,26 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Comment } from './comment.entity';
+import { log } from 'console';
+import { Logger } from '@nestjs/common';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column({
     unique: true,
     nullable: false,
   })
   name: string;
+
   @Column({
     unique: true,
     nullable: false,
   })
   email: string;
+
   @Column({
     nullable: false,
   })
