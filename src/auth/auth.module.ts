@@ -6,9 +6,16 @@ import { UserService } from 'src/user/user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
 import { LocalStrategy } from './strategies/local-strategy';
+import { JwtStrategy } from './strategies/jwt-strategy';
 
 @Module({
-  providers: [AuthService, UserService, LocalStrategy, UserService],
+  providers: [
+    AuthService,
+    UserService,
+    LocalStrategy,
+    UserService,
+    JwtStrategy,
+  ],
   controllers: [AuthController],
   imports: [
     TypeOrmModule.forFeature([User]),
