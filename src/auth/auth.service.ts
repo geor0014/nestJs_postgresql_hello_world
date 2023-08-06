@@ -39,4 +39,17 @@ export class AuthService {
       }),
     };
   }
+
+  async refreshToken(user: User) {
+    const payload = {
+      username: user.email,
+      sub: {
+        name: user.name,
+      },
+    };
+
+    return {
+      accessToken: this.jwtService.sign(payload),
+    };
+  }
 }

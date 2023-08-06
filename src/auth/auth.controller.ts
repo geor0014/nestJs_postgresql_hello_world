@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/loca-auth.guard';
 import { createUserDto } from 'src/user/createUserDto';
 import { UserService } from 'src/user/user.service';
+import { JwtRefreshGuard } from './guards/refresh-jwt.auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -29,5 +30,11 @@ export class AuthController {
   @Post('register')
   async register(@Body() createUserDto: createUserDto) {
     return await this.userService.create(createUserDto);
+  }
+
+  @UseGuards(JwtRefreshGuard)
+  @Post('refresh')
+  async refreshToken(@Request() req) {
+    return this.authService.refreshToken(req.user);
   }
 }
